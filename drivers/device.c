@@ -245,9 +245,12 @@ int device_is_fram(device_t dev)
 
 int device_erase(device_erase_type_t et, address_t addr)
 {
+	
 	if (device_is_fram(device_default)) {
-		printc_err("warning: not attempting erase of FRAM device\n");
-		return 0;
+		// printc_err("warning: not attempting erase of FRAM device\n");
+		// return 0;
+		printc_err("warning: FRAM device is marked to avoid erasure\nEngaging hack to erase FRAM anyway");
+		
 	}
 
 	return device_default->type->erase(device_default, et, addr);
